@@ -15,7 +15,7 @@ import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
  * @author ToanNS
  */
 @Configuration
-@ComponentScan(basePackages = {"org.aibles.okrs.core_exception.controller.advice"})
+@ComponentScan(basePackages = {"org.aibles.core_exception.controller.advice"})
 public class CoreExceptionConfiguration {
   @Bean
   public LocaleResolver localeResolver() {
