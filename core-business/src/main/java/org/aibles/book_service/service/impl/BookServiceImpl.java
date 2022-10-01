@@ -28,8 +28,8 @@ public class BookServiceImpl implements BookService {
     checkNameConflict(bookCreateDTO.getName());
 
     var book = bookCreateDTO.toBook(bookCreateDTO);
-    book.validate();
     book = repository.save(book);
+    book.validate();
 
     var response = new BookResponseDTO();
     response.toBookResponseDTO(book);
