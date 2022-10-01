@@ -7,14 +7,13 @@ import javax.validation.constraints.NotNull;
 import org.aibles.book_service.entity.Book;
 import org.aibles.book_service.validation.ModelValidator;
 
-public class BookCreateDTO extends ModelValidator<BookCreateDTO> {
+public class BookCreateDTO {
 
   @NotBlank
   private String name;
   @NotBlank
   private String description;
-  @NotNull
-  private Boolean isActive;
+  private boolean isActive;
   @NotNull
   private Instant releaseAt;
 
