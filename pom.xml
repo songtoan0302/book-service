@@ -8,7 +8,8 @@
 		<module>api</module>
 		<module>core-business</module>
 		<module>core-exception</module>
-	</modules>
+    <module>job</module>
+  </modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
