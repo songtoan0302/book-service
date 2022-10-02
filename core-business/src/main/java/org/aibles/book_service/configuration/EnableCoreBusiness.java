@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Import;
 
-@Import({CoreBusinessException.class})
+@Import({CoreBusinessConfiguration.class})
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EnableCoreBusiness {

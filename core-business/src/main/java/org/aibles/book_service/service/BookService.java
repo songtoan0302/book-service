@@ -3,6 +3,7 @@ package org.aibles.book_service.service;
 import org.aibles.book_service.dto.request.BookCreateDTO;
 import org.aibles.book_service.dto.request.BookUpdateDTO;
 import org.aibles.book_service.dto.response.BookResponseDTO;
+import org.aibles.book_service.entity.Book;
 import org.aibles.book_service.util.paging.PagingReq;
 import org.springframework.data.domain.Page;
 
@@ -49,5 +50,5 @@ public interface BookService {
    */
   void deleteAll();
 
-
+  void releaseBook();
 }

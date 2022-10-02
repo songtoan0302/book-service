@@ -102,6 +102,15 @@ public class BookServiceImpl implements BookService {
     repository.deleteAll();
   }
 
+  @Override
+  public void releaseBook() {
+    var books = repository.findAllValid();
+    books.forEach(book -> {
+      book.setActive(true);
+      repository.save(book);
+    });
+  }
+
   private void checkNameConflict(String name) {
     if (repository.existsByName(name)) {
       throw new ConflictException("Name : \"" + name + "\" existed!");
