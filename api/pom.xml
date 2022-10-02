@@ -18,7 +18,7 @@
   <dependencies>
     <dependency>
       <groupId>org.aibles.book_service</groupId>
-      <artifactId>core-business</artifactId>
+      <artifactId>job</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
