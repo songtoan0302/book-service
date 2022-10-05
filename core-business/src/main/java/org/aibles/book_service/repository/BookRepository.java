@@ -11,6 +11,6 @@ public interface BookRepository extends JpaRepository<Book, String> {
 
   boolean existsByName(String name);
 
-  @Query("SELECT e FROM Book e WHERE e.releaseAt > CURDATE()")
-  Iterable<Book> findAllValid();
+  @Query("UPDATE book SET book.is_active = 1 WHERE book.release_at > curdate()")
+  void releaseBook();
 }

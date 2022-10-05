@@ -104,11 +104,7 @@ public class BookServiceImpl implements BookService {
 
   @Override
   public void releaseBook() {
-    var books = repository.findAllValid();
-    books.forEach(book -> {
-      book.setActive(true);
-      repository.save(book);
-    });
+    repository.releaseBook();
   }
 
   private void checkNameConflict(String name) {
