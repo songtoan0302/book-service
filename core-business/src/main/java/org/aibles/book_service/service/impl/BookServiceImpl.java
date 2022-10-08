@@ -1,5 +1,7 @@
 package org.aibles.book_service.service.impl;
 
+import java.time.Instant;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aibles.book_service.dto.request.BookCreateDTO;
@@ -12,6 +14,9 @@ import org.aibles.book_service.util.paging.PagingReq;
 import org.aibles.core_exception.exception.ConflictException;
 import org.aibles.core_exception.exception.NotFoundException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
@@ -35,6 +40,11 @@ public class BookServiceImpl implements BookService {
     response.toBookResponseDTO(book);
     response.validate();
     return response;
+  }
+
+  @Override
+  public void createAll(List<Book> books) {
+    repository.saveAll(books);
   }
 
   @Override
@@ -105,6 +115,12 @@ public class BookServiceImpl implements BookService {
   @Override
   public void releaseBook() {
     repository.releaseBook();
+  }
+
+  @Override
+  public Page<Book> find(Instant releaseAt, int pageNum, int pageSize) {
+    var pageable = PageRequest.of(pageNum, pageSize);
+    return repository.findByReleaseAt(releaseAt,pageable);
   }
 
   private void checkNameConflict(String name) {
