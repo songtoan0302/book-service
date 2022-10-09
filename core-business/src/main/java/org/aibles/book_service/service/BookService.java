@@ -65,7 +65,7 @@ public interface BookService {
   void releaseBook();
 
   /**
-   *
+   * get list book follow paging to process step by step
    * @param releaseAt
    * @param pageNum
    * @param pageSize
