@@ -55,6 +55,7 @@ public class BookServiceImpl implements BookService {
 
     var book = repository.findById(id)
         .orElseThrow(() -> {
+          log.error("(update)id: {} ----> NOT_FOUND_EXCEPTION", id);
           throw new NotFoundException(id);
         });
     book = bookUpdateDTO.toBook(book, bookUpdateDTO);
@@ -74,6 +75,7 @@ public class BookServiceImpl implements BookService {
 
     var book = repository.findById(id)
         .orElseThrow(() -> {
+          log.error("(get)id: {} ----> NOT_FOUND_EXCEPTION", id);
           throw new NotFoundException(id);
         });
 
@@ -96,8 +98,8 @@ public class BookServiceImpl implements BookService {
   @Transactional
   public void delete(String id) {
     log.info("(delete)id: {}", id);
-    var book = repository.existsById(id);
-    if (book) {
+    if (repository.existsById(id)) {
+      log.error("(delete)id : {} ----> NOT_FOUND_EXCEPTION", id);
       throw new NotFoundException(id);
     }
 
@@ -125,7 +127,8 @@ public class BookServiceImpl implements BookService {
 
   private void checkNameConflict(String name) {
     if (repository.existsByName(name)) {
-      throw new ConflictException("Name : \"" + name + "\" existed!");
+      log.error("(checkNameConflict)name: {} ----> CONFLICT_EXCEPTION", name);
+      throw new ConflictException("Name : '" + name + "' existed!");
     }
   }
 
